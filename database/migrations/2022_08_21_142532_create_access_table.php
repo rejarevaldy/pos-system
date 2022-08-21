@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('access', function (Blueprint $table) {
+        Schema::create('access_user', function (Blueprint $table) {
             $table->id();
-            $table->integer('user');
             $table->boolean('manage_account');
             $table->boolean('manage_product');
             $table->boolean('manage_transaction');

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('product_type');
             $table->string('product_weight')->nullable();
             $table->string('product_brand')->nullable();
-            $table->string('product_status')->default('available');
+            $table->string('product_status')->default('available')->comment('Available' , 'Out of Stock');
             $table->bigInteger('stock');
             $table->bigInteger('price');
             $table->timestamps();
