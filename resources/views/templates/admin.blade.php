@@ -4,7 +4,7 @@
 <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
-    <title>{{ config('app.name')}} - Bootstrap Admin Dashboard HTML Template</title>
+    <title>{{ config('app.name') }} - Bootstrap Admin Dashboard HTML Template</title>
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/vendors/images/apple-touch-icon.png') }}" />
@@ -74,20 +74,15 @@
 
     <div class="main-container">
         <div class="xs-pd-20-10 pd-ltr-20">
-            <div class="title pb-20">
-                <h2 class="h3 mb-0">{{ 'Title' }}</h2>
-            </div>
-
-            <div class="row pb-10">
-                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+            <div class="min-height-200px">
+                @yield('content')
 
 
+                <div class="footer-wrap pd-20 mb-20 card-box">
+                    <a href="https://github.com/rejarevaldyf" target="_blank"
+                        class="text-dark text-decoration-none"><span><i class="bi bi-github"></i></span> Reja Revaldy
+                        F.</a>
                 </div>
-            </div>
-
-
-            <div class="footer-wrap pd-20 mb-20 card-box">
-                <a href="https://github.com/rejarevaldyf" target="_blank" class="text-dark text-decoration-none"><span><i class="bi bi-github"></i></span> Reja Revaldy F.</a>
             </div>
         </div>
     </div>

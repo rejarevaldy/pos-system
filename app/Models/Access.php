@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Access extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuid;
     protected $table = 'access_user';
     protected $fillable = ['manage_account', 'manage_product', 'manage_transaction', 'manage_report', 'users_id'];
 

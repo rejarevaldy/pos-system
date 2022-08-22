@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Supply extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuid;
 
     protected $table = 'supplies';
     protected $fillable = ['quantity', 'purchase_price', 'users_id', 'products_id'];

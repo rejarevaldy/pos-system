@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuid;
 
     protected $table = 'transactions';
     protected $fillable = ['transaction_code', 'quantity', 'discount', 'subtotal', 'total', 'pay', 'users_id', 'products_id'];
