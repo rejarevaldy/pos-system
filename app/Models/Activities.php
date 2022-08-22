@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activities extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuid;
 
     protected $table = 'activities';
     protected $fillable = ['activity_name', 'activity_count', 'users_id'];

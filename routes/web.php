@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Backend\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('templates.admin');
+Route::group([
+    'prefix' => 'auth',
+    'middleware' => 'auth'
+], function () {
+    Route::get('logout', [LoginController::class, 'destroy'])->name('logout');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
-Route::get('/login', function(){
-    return view('auth.login');
-});
+require __DIR__ . '/auth.php';

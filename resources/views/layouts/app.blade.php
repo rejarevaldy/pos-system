@@ -4,7 +4,7 @@
 <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
-    <title>{{ config('app.name') }} - Bootstrap Admin Dashboard HTML Template</title>
+    <title>{{ config('app.name') }} - {{ $title ?? '' }}</title>
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/vendors/images/apple-touch-icon.png') }}" />
@@ -68,7 +68,7 @@
             <div class="loading-text">Loading...</div>
         </div>
     </div>
-            @yield('content')
+    @yield('content')
 
 
     <!-- js -->

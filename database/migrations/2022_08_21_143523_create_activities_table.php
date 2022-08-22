@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('activities', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('activity_name');
             $table->integer('activity_count')->default('0');
-            $table->foreignId('users_id');
+            $table->foreignUuid('users_id');
             $table->timestamps();
         });
     }
