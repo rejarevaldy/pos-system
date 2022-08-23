@@ -70,13 +70,15 @@
                     <span class="user-icon shadow-none">
                         <img src="{{ asset('assets/vendors/images/photo1.jpg') }}" alt="" />
                     </span>
-                    <span class="user-name">Ross C. Lopez</span>
+                    <span
+                        class="user-name">{{ strlen(auth()->user()->name) > 12 ? substr(auth()->user()->name) . '..' : ucfirst(auth()->user()->name) }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                     <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
                     <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
                     <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="dw dw-logout"></i> Log
+                    <a class="dropdown-item text-danger" href="{{ route('auth.logout') }}"><i class="dw dw-logout"></i>
+                        Log
                         Out</a>
                 </div>
             </div>

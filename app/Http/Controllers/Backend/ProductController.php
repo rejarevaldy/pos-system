@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Backend;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
-class LoginController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,10 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('auth.login', [
-            'title' => 'Login',
-            'breadcrumb' => []
+        return view('backend.product.index', [
+            'title' => 'Products',
+            'breadcrumb' => request()->segments(),
+            'products' => Product::orderBy('created_at', 'desc')->get()
         ]);
     }
 
@@ -29,7 +29,10 @@ class LoginController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.product.create', [
+            'title' => 'Create Product',
+            'breadcrumb' => request()->segments(),
+        ]);
     }
 
     /**
@@ -40,16 +43,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
-        ]);
-
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/auth/dashboard');
-        }
+        //
     }
 
     /**
@@ -92,11 +86,8 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        Session::flush();
-        Auth::logout();
-
-        return redirect('/login');
+        //
     }
 }
