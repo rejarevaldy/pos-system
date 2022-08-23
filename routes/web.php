@@ -1,26 +1,32 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+// Auth
 use App\Http\Controllers\Auth\LoginController;
+
+// Backend
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\DashboardController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// Ajax
+use App\Http\Controllers\Ajax\ProductAjax;
 
-Route::group([
-    'prefix' => 'auth',
-    'middleware' => 'auth'
-], function () {
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::group(['prefix' => 'auth', 'middleware' => 'auth', 'as' => 'auth.'], function () {
     Route::get('logout', [LoginController::class, 'destroy'])->name('logout');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::resource('product', ProductController::class)->names('product');
+
+    Route::group(['prefix' => 'ajax', 'middleware' => 'auth', 'as' => 'ajax.'], function () {
+        Route::get('products', [ProductAjax::class, 'products'])->name('products');
+    });
 });
+
+
 
 require __DIR__ . '/auth.php';

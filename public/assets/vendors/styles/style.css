@@ -100,7 +100,7 @@ p {
     width: 100%;
 }
 .pre-loader {
-    background: #ECF0F4;
+    background: #ecf0f4;
     background-position: center center;
     background-size: 13%;
     position: fixed;
@@ -427,8 +427,13 @@ p {
     color: #fff;
 }
 .bg-light-green {
-    background-color: #41ccba;
+    background-color: #28d7bf;
 }
+
+.bg-green {
+    background-color: rgba(25, 216, 149, 0.119);
+}
+
 .text-light-green {
     color: #00e091;
 }
@@ -442,7 +447,7 @@ p {
     color: #2976aa;
 }
 .bg-light-orange {
-    background-color: #f56767;
+    background-color: #f68989;
 }
 .text-light-orange {
     color: #f56767;
@@ -551,6 +556,21 @@ p {
 .highcharts-root {
     font-family: "Inter", sans-serif !important;
 }
+
+.avaible-span {
+    color: #28d598;
+    background-color: rgba(25, 216, 149, 0.2);
+}
+
+.avaible-span:hover {
+    color: #19d895;
+}
+
+.outstock-span {
+    color: #ff6258;
+    background-color: rgba(255, 98, 88, 0.2);
+}
+
 .bootstrap-select .dropdown-toggle {
     height: 45px;
     padding-right: 30px;
