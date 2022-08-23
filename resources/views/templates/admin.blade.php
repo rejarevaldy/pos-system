@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('assets/plugins/datatables/css/responsive.bootstrap4.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/styles/style.css') }}" />
-    @yield('css')
+    @stack('css')
 
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
@@ -122,7 +122,6 @@
     <script src="{{ asset('assets/vendors/scripts/script.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/scripts/process.js') }}"></script>
     <script src="{{ asset('assets/vendors/scripts/layout-settings.js') }}"></script>
-    <script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
@@ -141,11 +140,16 @@
     <!-- Datatable Setting js -->
     <script src="{{ asset('assets/vendors/scripts/datatable-setting.js') }}"></script>
 
+
+    <!-- add sweet alert js & css in footer -->
+    <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.all.js') }}"></script>
+    <script src="{{ asset('assets/plugins/sweetalert2/sweet-alert.init.js') }}"></script>
+
     {{-- Google --}}
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0"
             style="display: none; visibility: hidden"></iframe></noscript>
 
-    @yield('script')
+    @stack('js')
 </body>
 
 </html>
