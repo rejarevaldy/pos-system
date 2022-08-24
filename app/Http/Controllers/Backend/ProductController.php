@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Session;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -65,7 +66,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return response()->json(['product' => $product]);
     }
 
     /**
@@ -77,7 +80,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $credentials = $request->validate([
+            'product_code'      => 'string',
+            'product_name'      => 'string',
+            'product_brand'     => 'string',
+            'product_type'      => 'string',
+            'product_unit'      => 'string',
+            'product_weight'    => 'integer',
+            'stock'             => 'integer',
+            'price'             => 'integer',
+        ]);
+
+        $product->update($credentials);
+
+        return redirect()->back()->with('success', 'Product update successfully.');
     }
 
     /**
@@ -90,7 +108,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('auth.product.index')
-            ->with('success');
+        return redirect()->back()->with('success', 'Product deleted successfully.');
     }
 }
