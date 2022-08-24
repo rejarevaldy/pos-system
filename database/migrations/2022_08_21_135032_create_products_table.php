@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('product_code');
             $table->string('product_name');
             $table->string('product_type');
-            $table->string('product_weight')->nullable();
+            $table->integer('product_weight')->nullable();
+            $table->string('product_unit')->nullable();
             $table->string('product_brand')->nullable();
             $table->string('product_status')->default('available')->comment('Available', 'Out of Stock');
             $table->bigInteger('stock');

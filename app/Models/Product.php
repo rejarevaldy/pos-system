@@ -15,6 +15,7 @@ class Product extends Model
         'product_name',
         'product_type',
         'product_weight',
+        'product_unit',
         'product_brand',
         'product_status',
         'stock',
