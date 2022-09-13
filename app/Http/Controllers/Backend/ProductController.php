@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         return view('backend.product.index', [
-            'title' => 'Products',
+            'title' => 'List Products',
             'breadcrumb' => request()->segments(),
             'products' => Product::orderBy('created_at', 'desc')->get()
         ]);
@@ -44,7 +44,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credentials = $request->validate([
+            'product_code'      => 'string',
+            'product_name'      => 'string',
+            'product_brand'     => 'string|nullable',
+            'product_type'      => 'string',
+            'product_unit'      => 'string|nullable',
+            'product_weight'    => 'integer|nullable',
+            'stock'             => 'integer',
+            'price'             => 'integer',
+        ]);
+
+        Product::create($credentials);
+
+        return redirect()->back()->with('success', 'Product created successfully.');
     }
 
     /**
