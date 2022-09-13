@@ -50,6 +50,7 @@ $("document").ready(function () {
     });
 
     $(".data-table-simple").DataTable({
+        scrollX: true,
         scrollCollapse: true,
         autoWidth: false,
         responsive: true,

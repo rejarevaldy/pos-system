@@ -74,47 +74,48 @@
 
     <div class="main-container">
         <div class="xs-pd-20-10 pd-ltr-20">
-            <div class="min-height-200px">
-                <div class="page-header ">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="title">
-                                <h4>{{ $title ?? '' }}</h4>
-                            </div>
-                            <nav aria-label="breadcrumb" role="navigation">
-                                <ol class="breadcrumb">
-                                    @foreach ($breadcrumb as $key => $item)
-                                        @if (count($breadcrumb) - 1 == $key)
-                                            <li class="breadcrumb-item">
-                                                <a href="#">{{ Str::ucfirst($item) }}</a>
-                                            </li>
-                                        @else
-                                            <li class="breadcrumb-item active" aria-current="page">
-                                                {{ Str::ucfirst($item) }}
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ol>
-                            </nav>
+            <div class="page-header ">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                @foreach ($breadcrumb as $key => $item)
+                                    @if (count($breadcrumb) - 1 == $key)
+                                        <li class="breadcrumb-item">
+                                            <a href="#">{{ Str::ucfirst($item) }}</a>
+                                        </li>
+                                    @else
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            {{ Str::ucfirst($item) }}
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="title text-right">
+                            <h4>{{ $title ?? '' }}</h4>
                         </div>
                     </div>
-                </div>
-                @yield('content')
 
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 ">
-                        <div class="footer-wrap pd-20 mb-20 card-box">
-                            <a href="https://github.com/rejarevaldyf" target="_blank"
-                                class="text-dark text-decoration-none text-right"><span><i
-                                        class="bi bi-github"></i></span>
-                                Reja
-                                Revaldy
-                                F.</a>
-                        </div>
+                </div>
+            </div>
+            @yield('content')
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 ">
+                    <div class="footer-wrap pd-20 mb-20 card-box">
+                        <a href="https://github.com/rejarevaldyf" target="_blank"
+                            class="text-dark text-decoration-none text-right"><span><i class="bi bi-github"></i></span>
+                            Reja
+                            Revaldy
+                            F.</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 

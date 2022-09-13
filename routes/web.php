@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['prefix' => 'auth', 'middleware' => 'auth', 'as' => 'auth.'], function () {
-    Route::get('logout', [LoginController::class, 'destroy'])->name('logout');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('product', ProductController::class)->names('product');

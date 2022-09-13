@@ -4,7 +4,7 @@
         <div class="col-md-12 col-sm-12 mb-20">
             <div class="card-box mb-30">
                 <div class="pd-20">
-                    <table class="data-table-simple table nowrap">
+                    <table class="data-table-simple table ">
                         <thead>
                             <tr class="text-secondary">
                                 <th class="sorting_asc_disabled sorting_desc_disabled table-plus datatable-nosort">Product
