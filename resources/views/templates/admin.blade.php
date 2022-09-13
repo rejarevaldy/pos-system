@@ -147,6 +147,9 @@
     <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.all.js') }}"></script>
     <script src="{{ asset('assets/plugins/sweetalert2/sweet-alert.init.js') }}"></script>
 
+    {{-- Barcode --}}
+    <script src="{{ asset('assets/plugins/quagga/quagga.min.js') }}"></script>
+
     {{-- Google --}}
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0"
             style="display: none; visibility: hidden"></iframe></noscript>

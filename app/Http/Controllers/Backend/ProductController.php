@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backend;
 use Session;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Imports\ProductsImport;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -122,5 +124,12 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->back()->with('success', 'Product deleted successfully.');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new ProductsImport, $request->file('excel_file'));
+
+        return redirect()->back()->with('success', 'Product imported successfully.');
     }
 }
