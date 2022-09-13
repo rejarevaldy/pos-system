@@ -20,6 +20,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'auth', 'as' => 'auth.'], func
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('product', ProductController::class)->names('product');
+    Route::post('product/import', [ProductController::class, 'import'])->name('product.import');
 
     Route::group(['prefix' => 'ajax', 'middleware' => 'auth', 'as' => 'ajax.'], function () {
         Route::get('products', [ProductAjax::class, 'products'])->name('products');

@@ -1,8 +1,22 @@
 @extends('templates.admin')
 @section('content')
     <div class="row">
+        <div class="modal fade" id="scanModal" tabindex="-1" role="dialog" aria-labelledby="scanModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scanModalLabel">Scan Barcode</h5>
+                        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="col-md-8 col-sm-12 mb-20 col-lg-12">
-            <div class="card-box ">
+            <div class="card-box `">
                 <div class="pd-20">
                     <form action="{{ route('auth.product.store') }}" method="POST">
                         @csrf
@@ -123,22 +137,26 @@
                     <div class="col-lg-6 ">
                         <div class="card-box shadow-none">
                             <div class="card-body">
-                                <form action="" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('auth.product.import') }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
+                                    @method('POST')
                                     <div class="d-flex justify-content-between pb-2 align-items-center mb-2">
                                         <h4 class="card-title mb-0">Import</h4>
-                                        <input type="file" name="excel_file" hidden="" accept=".xls, .xlsx">
-                                        <a href="#" class="excel-file">
+                                        <input type="file" name="excel_file" accept=".xls, .xlsx" hidden="">
+                                        <a href="#" class="excel-file ">
                                             <div>
                                                 <i class="bi bi-upload"></i>
                                             </div>
                                         </a>
+                                        </input>
                                     </div>
                                     <div class="d-flex justify-content-between mb-2">
                                         <h4 class="card-title mb-0">Uploaded File</h4>
-                                        <p class="text-muted">Null</p>
+                                        <p class="text-muted file-name"></p>
                                     </div>
-                                    <button class="btn btn-block  btn-upload" type="submit" hidden="">Import
+                                    <button class="btn btn-block  btn-upload btn-primary" type="submit"
+                                        hidden="">Import
                                         Data</button>
                                 </form>
                             </div>
@@ -173,5 +191,17 @@
     </div>
 
     @push('js')
+        <script>
+            $('input[name=excel_file]').change(function() {
+                var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+                $('.file-name').html(filename);
+                $('.btn-upload').prop('hidden', false);
+            });
+
+            $(document).on('click', '.excel-file', function(e) {
+                e.preventDefault();
+                $('input[name=excel_file]').click();
+            });
+        </script>
     @endpush
 @endsection
