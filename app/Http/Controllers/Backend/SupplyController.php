@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Supply;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SupplyController extends Controller
 {
@@ -40,7 +42,19 @@ class SupplyController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        foreach ($request->product_id as $key => $value) {
+            Supply::create([
+                'quantity'          => $request->stock[$key],
+                'purchase_price'    => $request->price[$key],
+                'total_price'       => $request->total_price[$key],
+                'products_id'       => $request->product_id[$key],
+                'users_id'          => Auth::user()->id,
+            ]);
+        }
+
+
+
+        return redirect()->back()->with('success', 'Supply created successfully.');
     }
 
     /**

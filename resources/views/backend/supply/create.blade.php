@@ -167,6 +167,8 @@
                 let price = $('#price').val();
                 let total_price = (price * stock);
 
+                console.log(total_price)
+
                 $.ajax({
                     method: "GET",
                     url: "{{ url('/auth/ajax/product/') }}/" + product_code,
@@ -178,21 +180,23 @@
                             `<tr id="remove_tr">
                                 <td class="table-plus">
                                     <p>${product_code}</p><small class="text-blue">${product_name}</small>
-                                    <input hidden name="id_product[${i}]" value="${product_id}" >
+                                    <input hidden name="product_id[${i}]" value="${product_id}" >
+
                                 </td>
                                 <td><span class="p-2 bg-light-gray rounded border  mr-2"><i
                                             class="bi bi-box-seam "></i></span>
                                     ${stock}
-                                    <input hidden name="stock[${i}]" value="${stock}">
+                                    <input  type="number" hidden name="stock[${i}]" value="${parseInt(stock)}">
                                 </td>
                                 <td><span class="p-2 bg-green rounded border mr-2"><i
                                             class="bi bi-currency-dollar "></i></span>Rp.
-                                    ${number_format(price, 2, ',', '.')}
+                                    ${number_format(price, 0, ',', '.')}
+                                    <input type="number" hidden name="price[${i}]" value="${parseInt(price)}">
                                 </td>
                                 <td class="text-success"><span class="p-2 bg-green rounded border mr-2 "><i
                                             class="bi bi-currency-dollar "></i></span>Rp.
-                                    ${number_format(total_price, 2, ',', '.')}
-                                    <input hidden name="total_price[${i}]" value="${total_price}">
+                                    ${number_format(total_price, 0, ',', '.')}
+                                    <input type="number" hidden name="total_price[${i}]" value="${parseInt(total_price)}">
                                 </td>
                                 <td>
                                     <button class="btn btn-edit btn-icons rounded-circle  btn-sm bg-light-gray border "
