@@ -42,19 +42,21 @@
                                             class="{{ $product->product_status == 'avaible' ? 'bg-green  rounded border' : 'bg-light-orange  rounded border' }}  p-2">{{ ucfirst($product->product_status) }}</span>
                                     </td>
                                     <td>
-                                        <button class=" btn btn-edit btn-icons rounded  btn-sm bg-light-gray border "
+                                        <button
+                                            class=" btn btn-edit btn-icons rounded-circle  btn-sm bg-light-gray border mr-1"
                                             id="editModalBtn" data-toggle="modal"
                                             data-target="#editModal_{{ $product->id }}" data-id="{{ $product->id }}"
                                             data-url="{{ route('auth.product.update', $product) }}"
                                             onClick='handleEdit(this)'><small
                                                 class="font-weight-bold bi bi-pencil"></small></button>
-                                        <button class="btn btn-edit btn-icons rounded  btn-sm bg-light-gray border "
+                                        <button class="btn btn-edit btn-icons rounded-circle  btn-sm bg-light-gray border "
                                             id="deleteModalBtn" data-toggle="modal"
                                             data-target="#deleteModal_{{ $product->id }}" data-id="{{ $product->id }}"
                                             data-url="{{ route('auth.product.destroy', $product) }}"
                                             onClick='handleDelete(this)'><small
                                                 class="font-weight-bold bi bi-x-lg"></small></button>
                                     </td>
+
                                 </tr>
                             @endforeach
                         </tbody>

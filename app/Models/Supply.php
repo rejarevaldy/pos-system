@@ -10,7 +10,7 @@ class Supply extends Model
     use HasFactory, HasUuid;
 
     protected $table = 'supplies';
-    protected $fillable = ['quantity', 'purchase_price', 'users_id', 'products_id'];
+    protected $fillable = ['quantity', 'purchase_price', 'total_price', 'users_id', 'products_id'];
 
     public function user()
     {
