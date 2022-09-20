@@ -17,6 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->bigInteger('quantity');
             $table->bigInteger('purchase_price');
+            $table->bigInteger('total_price');
             $table->foreignUuid('users_id');
             $table->foreignUuid('products_id');
             $table->timestamps();

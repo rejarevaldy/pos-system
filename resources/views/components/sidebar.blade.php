@@ -31,8 +31,8 @@
                         <i class="micon bi bi-justify"></i><span class="mtext">Supply</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('auth.product.index') }}">List Supply</a></li>
-                        <li><a href="{{ route('auth.product.create') }}">Create Supply</a></li>
+                        <li><a href="{{ route('auth.supply.index') }}">List Supply</a></li>
+                        <li><a href="{{ route('auth.supply.create') }}">Create Supply</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

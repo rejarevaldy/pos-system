@@ -12,4 +12,10 @@ class ProductAjax extends Controller
     {
         return response()->json(Product::all());
     }
+
+    public function getProductCode($code)
+    {
+        $product = Product::where('product_code', $code)->first();
+        return response()->json(['product' => $product]);
+    }
 }

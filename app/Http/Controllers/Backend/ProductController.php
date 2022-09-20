@@ -130,6 +130,6 @@ class ProductController extends Controller
     {
         Excel::import(new ProductsImport, $request->file('excel_file'));
 
-        return redirect()->back()->with('success', 'Product imported successfully.');
+        return redirect('/auth/product')->with('success', 'Product imported successfully.');
     }
 }
