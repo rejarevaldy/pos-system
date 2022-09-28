@@ -17,7 +17,19 @@ class SupplyController extends Controller
      */
     public function index()
     {
-        //
+        $get_date = Supply::all();
+        $unique_date = [];
+        foreach ($get_date as $date) {
+            array_push($unique_date, $date->created_at->toDateString());
+        }
+        $dates = array_unique($unique_date);
+        rsort($dates);
+
+        return view('backend.supply.index', [
+            'title' => 'List Supply',
+            'breadcrumb' => request()->segments(),
+            'dates' => $dates
+        ]);
     }
 
     /**
@@ -54,7 +66,7 @@ class SupplyController extends Controller
 
 
 
-        return redirect()->back()->with('success', 'Supply created successfully.');
+        return redirect('/auth/supply')->with('success', 'Supply created successfully.');
     }
 
     /**
