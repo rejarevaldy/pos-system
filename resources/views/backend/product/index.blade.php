@@ -36,6 +36,7 @@
                                     <td><span class="p-2 bg-green rounded border mr-2"><i
                                                 class="bi bi-currency-dollar "></i></span>Rp.
                                         {{ number_format($product->price, 2, ',', '.') }}
+
                                     </td>
                                     <td class="text-center">
                                         <span
