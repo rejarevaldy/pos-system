@@ -64,8 +64,6 @@ class SupplyController extends Controller
             ]);
         }
 
-
-
         return redirect('/auth/supply')->with('success', 'Supply created successfully.');
     }
 

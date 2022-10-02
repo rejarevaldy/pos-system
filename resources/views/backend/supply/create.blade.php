@@ -221,7 +221,6 @@
                     $('#table_supply').addClass("d-none");
 
                 }
-                console.log(i);
             });
         </script>
     @endpush
