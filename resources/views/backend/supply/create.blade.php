@@ -97,7 +97,6 @@
                     </div>
                     <form action="{{ route('auth.supply.store') }}" method="POST">
                         @csrf
-
                         <table class="table d-none " id="table_supply">
                             <thead>
                                 <tr class="text-secondary">
@@ -111,7 +110,7 @@
                                     <th class="sorting_asc_disabled sorting_desc_disabled datatable-nosort"></th>
                                 </tr>
                             </thead>
-                            <tbody id="itemList">
+                            <tbody id="item_list">
                             </tbody>
 
                         </table>
@@ -167,8 +166,6 @@
                 let price = $('#price').val();
                 let total_price = (price * stock);
 
-                console.log(total_price)
-
                 $.ajax({
                     method: "GET",
                     url: "{{ url('/auth/ajax/product/') }}/" + product_code,
@@ -176,7 +173,7 @@
                         let product_name = response.product.product_name;
                         let product_id = response.product.id;
 
-                        $("#itemList").append(
+                        $("#item_list").append(
                             `<tr id="remove_tr">
                                 <td class="table-plus">
                                     <p>${product_code}</p><small class="text-blue">${product_name}</small>
@@ -200,7 +197,7 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-edit btn-icons rounded-circle  btn-sm bg-light-gray border "
-                                        id="button_remove"><small
+                                        id="button_remove" ><small
                                             class="font-weight-bold bi bi-x-lg"></small></button>
                                 </td>
                             </tr>`
@@ -208,18 +205,22 @@
                     }
                 })
                 this.reset();
-
             })
+
+
 
             $(document).on('click', '#button_remove', function() {
                 $(this).parents('#remove_tr').remove();
+                i = i - 1;
 
-                i -= 1;
                 if (i == 0) {
                     $('#empty_alert').removeClass("d-none fade");
                     $('#button_submit').removeClass("d-none");
                     $('#table_supply').addClass("d-none");
+                }
 
+                if ($('#empty_alert').length && i == 0) {
+                    $('#button_submit').addClass("d-none");
                 }
             });
         </script>
