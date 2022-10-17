@@ -12,6 +12,11 @@ class SupplyAjax extends Controller
     {
         $supply = Supply::with(['product', 'user'])->whereDate('created_at', '=', $date)
             ->orderBy('created_at', 'DESC')->get();
-        return response()->json(['supply' => $supply]);
+        $date = $supply[0]->created_at->format('Y-m-d');
+
+        return response()->json([
+            'supply' => $supply,
+            'date' => $date
+        ]);
     }
 }

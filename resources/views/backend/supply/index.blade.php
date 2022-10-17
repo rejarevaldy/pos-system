@@ -104,6 +104,7 @@
                         url: "{{ url('auth/ajax/supply/') }}/" + $search_input,
                         dataType: 'json',
                         success: function(response) {
+                            $('#date').text(response.date)
                             const list_supply = document.querySelectorAll('#list_supply')
                             const products_id = response.products_id;
                             let list = `
@@ -126,14 +127,13 @@
                                     </td>
                                 </tr>`
                             response.supply.map(data => {
-                                list += `<tr>
+                                list += `
                                     <th>
                                         <span class="d-block">${data.product.product_name}</span>
                                         <span class="text-secondary"><small>${data.product.product_code}</small></span>
-                                        <span class="d-block mt-2 text-secondary"><small></small>${data.created_at}</span>
                                     </th>
                                     <td><span class="p-2 bg-light-gray rounded border  mr-2"><i
-                                                class="bi bi-box-seam "></i>${data.quantity}</span>
+                                                class="bi bi-box-seam "></i> ${data.quantity} </span>
                                     </td>
                                     <td><span class="p-2 bg-green rounded border mr-2"><i
                                                 class="bi bi-currency-dollar "></i></span>Rp. ${data.purchase_price}
