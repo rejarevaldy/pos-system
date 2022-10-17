@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\SupplyController;
 
 // Ajax
 use App\Http\Controllers\Ajax\ProductAjax;
+use App\Http\Controllers\Ajax\SupplyAjax;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +24,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'auth', 'as' => 'auth.'], func
     Route::post('product/import', [ProductController::class, 'import'])->name('product.import');
 
     Route::group(['prefix' => 'ajax', 'middleware' => 'auth', 'as' => 'ajax.'], function () {
+        Route::get('supply/{date}', [SupplyAjax::class, 'getSupplyDate'])->name('supply.search');
         Route::get('products', [ProductAjax::class, 'products'])->name('products');
         Route::get('product/{code}', [ProductAjax::class, 'getProductCode'])->name('product.get');
     });
